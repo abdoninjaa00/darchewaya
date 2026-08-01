@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dar Tajine | دار الطاجين — Restaurant Marocain Traditionnel à Agadir</title>
+<meta name="description" content="Dar Tajine, restaurant marocain traditionnel à Agadir. Tajines, grillades, couscous et thé à la menthe dans un cadre chaleureux inspiré des riads.">
+
+<!-- Tailwind CSS via CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:        '#241710',
+          parchment:  '#F4E9D8',
+          zellige:    '#0E5E63',
+          zelligedark:'#0A4247',
+          clay:       '#BE5A2E',
+          claydark:   '#9C471F',
+          saffron:    '#D6A343',
+          henna:      '#6E2A1D',
+        },
+        fontFamily: {
+          display: ['"Cormorant Garamond"', 'serif'],
+          arabic:  ['Amiri', 'serif'],
+          body:    ['Jost', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Amiri:wght@400;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; }
+  .scroll-offset { scroll-margin-top: 96px; }
+  ::selection { background-color: #D6A343; color: #241710; }
+  :focus-visible { outline: 2px solid #D6A343; outline-offset: 3px; }
+
+  /* Mobile menu default state */
+  #mobile-menu { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  #mobile-menu.open { max-height: 400px; }
+
+  /* Watermark star behind menu heading */
+  .khatam-watermark {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 640px; height: 640px;
+    transform: translate(-50%, -50%) rotate(8deg);
+    color: #BE5A2E;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    #mobile-menu { transition: none; }
+  }
+</style>
+</head>
+
+<body class="bg-parchment text-ink antialiased">
+
+<!-- Reusable geometric ornament (rub el hizb / khatam star), used sparingly as the site's signature motif -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="khatam" viewBox="0 0 100 100">
+    <rect x="18" y="18" width="64" height="64" fill="none" stroke="currentColor" stroke-width="3.5"/>
+    <rect x="18" y="18" width="64" height="64" transform="rotate(45 50 50)" fill="none" stroke="currentColor" stroke-width="3.5"/>
+  </symbol>
+</svg>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="fixed inset-x-0 top-0 z-50 bg-ink/75 backdrop-blur-md border-b border-saffron/20">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#accueil" class="flex flex-col leading-none group">
+      <span class="font-display text-2xl md:text-3xl text-parchment tracking-wide group-hover:text-saffron transition-colors">Dar Tajine</span>
+      <span dir="rtl" class="font-arabic text-saffron text-sm md:text-base -mt-1">دار الطاجين</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-10 text-sm uppercase tracking-[0.15em] text-parchment/90">
+      <a href="#accueil" class="hover:text-saffron transition-colors">Accueil</a>
+      <a href="#menu" class="hover:text-saffron transition-colors">Menu</a>
+      <a href="#contact" class="hover:text-saffron transition-colors">Contact Us</a>
+      <a href="#localisation" class="hover:text-saffron transition-colors">Localisation</a>
+    </nav>
+
+    <!-- Mobile toggle -->
+    <button id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu de navigation"
+      class="md:hidden text-parchment p-2">
+      <svg id="icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg id="icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="hidden"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile nav panel -->
+  <div id="mobile-menu" class="md:hidden bg-ink/95 border-t border-saffron/20">
+    <nav class="flex flex-col px-6 py-4 gap-4 text-sm uppercase tracking-[0.15em] text-parchment/90">
+      <a href="#accueil" class="py-1 hover:text-saffron transition-colors">Accueil</a>
+      <a href="#menu" class="py-1 hover:text-saffron transition-colors">Menu</a>
+      <a href="#contact" class="py-1 hover:text-saffron transition-colors">Contact Us</a>
+      <a href="#localisation" class="py-1 hover:text-saffron transition-colors">Localisation</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="accueil" class="scroll-offset relative min-h-screen flex items-center justify-center overflow-hidden">
+
+  <!-- Background image : à remplacer par une photo de tajine dans un riad dont vous détenez les droits -->
+  <div class="absolute inset-0 bg-cover bg-center"
+       style="background-image:url('https://images.unsplash.com/photo-1541518763669-27fef04b14ea?q=80&w=1920&auto=format&fit=crop');">
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/55 to-ink/90"></div>
+
+  <div class="relative z-10 max-w-2xl mx-auto px-6 text-center pt-24">
+    <p class="uppercase tracking-[0.35em] text-saffron text-xs md:text-sm mb-5">Cuisine Marocaine Authentique · Agadir</p>
+    <h1 class="font-display text-5xl sm:text-6xl md:text-7xl text-parchment mb-2">Dar Tajine</h1>
+    <p dir="rtl" class="font-arabic text-saffron text-2xl md:text-3xl mb-8">دار الطاجين</p>
+
+    <p class="text-parchment/90 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+      Bienvenue à Dar Tajine. Ici, chaque plat raconte une histoire : épices soigneusement dosées,
+      cuissons lentes et recettes transmises de génération en génération. Installez-vous et venez
+      découvrir les meilleures saveurs authentiques du Maroc, au cœur d'Agadir.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="#menu" class="px-8 py-3 bg-clay hover:bg-claydark text-parchment font-medium uppercase tracking-wide text-sm transition-colors">
+        Voir le Menu
+      </a>
+      <a href="#contact" class="px-8 py-3 border border-saffron text-saffron hover:bg-saffron hover:text-ink font-medium uppercase tracking-wide text-sm transition-colors">
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Divider ornament -->
+<div class="bg-parchment border-b border-saffron/20 py-6 flex justify-center">
+  <svg class="w-7 h-7 text-clay"><use href="#khatam"/></svg>
+</div>
+
+<!-- ============ MENU ============ -->
+<section id="menu" class="scroll-offset relative py-24 px-6 bg-parchment overflow-hidden">
+  <svg class="khatam-watermark"><use href="#khatam"/></svg>
+
+  <div class="relative max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="uppercase tracking-[0.3em] text-clay text-xs md:text-sm mb-3">La Carte</p>
+      <h2 class="font-display text-4xl md:text-5xl text-ink mb-4">Notre Menu</h2>
+      <p class="text-ink/70 max-w-xl mx-auto">
+        Une sélection de plats marocains mijotés avec passion, à partager en famille ou entre amis —
+        comptez entre 50 et 150 DH par personne.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-x-16 gap-y-14">
+
+      <!-- Tajines -->
+      <div>
+        <h3 class="font-display text-2xl text-clay border-b border-saffron/30 pb-3 mb-5 flex items-center gap-3">
+          <svg class="w-4 h-4 shrink-0"><use href="#khatam"/></svg> Tajines
+        </h3>
+        <ul class="space-y-4 text-ink/90">
+          <li class="flex items-baseline gap-2">
+            <span>Tajine de Poulet, Olives &amp; Citron Confit</span>
+            <span class="flex-1 border-b border-dotted border-ink/30 mb-1"></span>
+            <span class="font-medium">75 DH</span>
+          </li>
+          <li class="flex items-baseline gap-2">
+            <span>Tajine de Kefta aux Œufs</span>
+            <span class="flex-1 border-b border-dotted border-ink/30 mb-1"></span>
+            <span class="font-medium">65 DH</span>
+          </li>
+          <li class="flex items-baseline gap-2">
+            <span>Tajine d'Agneau aux Pruneaux &amp; Amandes</span>
+            <span class="flex-1 border-b border-dotted border-ink/30 mb-1"></span>
+            <span class="font-medium">100 DH</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Grillades -->
+      <div>
+        <h3 class="font-display text-2xl text-clay border-b border-saffron/30 pb-3 mb-5 flex items-center gap-3">
+          <svg class="w-4 h-4 shrink-0"><use href="#khatam"/></svg> Grillades
+        </h3>
+        <ul class="space-y-4 text-ink/90">
+          <li class="flex items-baseline gap-2">
+            <span>Brochettes de Poulet Marinées</span>
+            <span class="flex-1 border-b border-dotted border-ink/30 mb-1"></span>
+            <span class="font-medium">60 DH</span>
+          </li>
+          <li class="flex items-baseline gap-2">
+            <span>Kebab d'Agneau Grillé</span>
+            <span class="flex-1 border-b border-dotted border-ink/30 mb-1"></span>
+            <span class="font-medium">90 DH</span>
+          </li>
+          <li class="flex items-baseline gap-2">
+            <span>Assortiment de Grillades Mixtes</span>
+            <span class="flex-1 border-b border-dotted border-ink/30 mb-1"></span>
+            <span class="font-medium">130 DH</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Couscous -->
+      <div>
+        <h3 class="font-display text-2xl text-clay border-b border-saffron/30 pb-3 mb-5 flex items-center gap-3">
+          <svg class="w-4 h-4 shrink-0"><use href="#khatam"/></svg> Couscous
+        </h3>
+        <ul class="space-y-4 text-ink/90">
+          <li class="flex items-baseline gap-2">
+            <span>Couscous Royal (Agneau, Poulet, Merguez)</span>
+            <span class="flex-1 border-b border-dotted border-ink/30 mb-1"></span>
+            <span class="font-medium">120 DH</span>
+          </li>
+          <li class="flex items-baseline gap-2">
+            <span>Couscous aux Sept Légumes</span>
+            <span class="flex-1 border-b border-dotted border-ink/30 mb-1"></span>
+            <span class="font-medium">80 DH</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Salades marocaines -->
+      <div>
+        <h3 class="font-display text-2xl text-clay border-b border-saffron/30 pb-3 mb-5 flex items-center gap-3">
+          <svg class="w-4 h-4 shrink-0"><use href="#khatam"/></svg> Salades Marocaines
+        </h3>
+        <ul class="space-y-4 text-ink/90">
+          <li class="flex items-baseline gap-2">
+            <span>Assortiment de Salades Traditionnelles</span>
+            <span class="flex-1 border-b border-dotted border-ink/30 mb-1"></span>
+            <span class="font-medium">50 DH</span>
+          </li>
+          <li class="flex items-baseline gap-2">
+            <span>Zaalouk &amp; Taktouka</span>
+            <span class="flex-1 border-b border-dotted border-ink/30 mb-1"></span>
+            <span class="font-medium">55 DH</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Thé à la menthe -->
+      <div class="md:col-span-2 md:max-w-md md:mx-auto text-center">
+        <h3 class="font-display text-2xl text-clay border-b border-saffron/30 pb-3 mb-5 flex items-center justify-center gap-3">
+          <svg class="w-4 h-4 shrink-0"><use href="#khatam"/></svg> Thé à la Menthe
+        </h3>
+        <ul class="space-y-4 text-ink/90">
+          <li class="flex items-baseline gap-2">
+            <span>Théière de Thé à la Menthe Traditionnel</span>
+            <span class="flex-1 border-b border-dotted border-ink/30 mb-1"></span>
+            <span class="font-medium">50 DH</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Divider ornament -->
+<div class="bg-parchment border-t border-saffron/20 py-6 flex justify-center">
+  <svg class="w-7 h-7 text-zellige"><use href="#khatam"/></svg>
+</div>
+
+<!-- ============ CONTACT & LOCALISATION (split screen) ============ -->
+<section id="contact" class="scroll-offset bg-zellige text-parchment">
+  <div class="grid md:grid-cols-2">
+
+    <!-- Left: infos -->
+    <div class="relative p-10 md:p-16 flex flex-col justify-center gap-6">
+      <svg class="w-10 h-10 text-saffron/30 absolute top-8 left-8 hidden md:block"><use href="#khatam"/></svg>
+
+      <p class="uppercase tracking-[0.3em] text-saffron text-xs md:text-sm">Contact &amp; Informations</p>
+      <h2 class="font-display text-3xl md:text-4xl">Dar Tajine <span class="font-arabic text-2xl">| دار الطاجين</span></h2>
+
+      <div class="flex items-center gap-2 text-saffron">
+        <span class="tracking-wide">★★★★</span><span class="text-parchment/40">★</span>
+        <span class="text-parchment/90 text-sm ml-1">4.0 &nbsp;(1 986 avis)</span>
+      </div>
+
+      <dl class="space-y-4 text-parchment/90 text-sm md:text-base border-t border-parchment/15 pt-6">
+        <div class="flex gap-3">
+          <dt class="w-28 shrink-0 text-saffron/90 uppercase text-xs tracking-wider pt-0.5">Prix</dt>
+          <dd>50–150 DH par personne</dd>
+        </div>
+        <div class="flex gap-3">
+          <dt class="w-28 shrink-0 text-saffron/90 uppercase text-xs tracking-wider pt-0.5">Ville</dt>
+          <dd>Agadir <span class="text-parchment/60">(Code Plus : CC8C+R4 Agadir)</span></dd>
+        </div>
+        <div class="flex gap-3">
+          <dt class="w-28 shrink-0 text-saffron/90 uppercase text-xs tracking-wider pt-0.5">Adresse</dt>
+          <dd>
+            Avenue 2 Mars, Agadir 80000<br>
+            <span dir="rtl" class="font-arabic text-parchment/80">شارع 2 مارس، أگادير 80000</span>
+          </dd>
+        </div>
+        <div class="flex gap-3">
+          <dt class="w-28 shrink-0 text-saffron/90 uppercase text-xs tracking-wider pt-0.5">Téléphone</dt>
+          <dd>
+            <a href="tel:+212528211028" class="hover:text-saffron transition-colors">0528 21 10 28</a>
+            &nbsp;/&nbsp;
+            <a href="tel:+212528211028" class="hover:text-saffron transition-colors">05 28 21 10 28</a>
+          </dd>
+        </div>
+        <div class="flex gap-3">
+          <dt class="w-28 shrink-0 text-saffron/90 uppercase text-xs tracking-wider pt-0.5">Horaires</dt>
+          <dd>Ouvert jusqu'à 01:00 du matin</dd>
+        </div>
+      </dl>
+
+      <div class="flex flex-wrap gap-2 pt-2">
+        <span class="px-3 py-1.5 border border-saffron/40 text-xs uppercase tracking-wide rounded-full">Repas sur place</span>
+        <span class="px-3 py-1.5 border border-saffron/40 text-xs uppercase tracking-wide rounded-full">Drive</span>
+        <span class="px-3 py-1.5 border border-saffron/40 text-xs uppercase tracking-wide rounded-full">Livraison sans contact</span>
+      </div>
+
+      <div class="pt-4">
+        <a href="tel:+212528211028" class="inline-block px-7 py-3 bg-clay hover:bg-claydark text-parchment text-sm uppercase tracking-wide font-medium transition-colors">
+          Appeler le restaurant
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: map -->
+    <div id="localisation" class="scroll-offset relative min-h-[420px] md:min-h-full">
+      <iframe
+        title="Localisation de Dar Tajine, Avenue 2 Mars, Agadir"
+        src="https://www.google.com/maps?q=Avenue+2+Mars,+Agadir+80000,+Morocco&output=embed"
+        class="absolute inset-0 w-full h-full border-0"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-parchment/70 border-t border-saffron/20">
+  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
+    <div class="flex flex-col items-center md:items-start leading-none gap-1">
+      <span class="font-display text-xl text-parchment">Dar Tajine</span>
+      <span dir="rtl" class="font-arabic text-saffron text-sm">دار الطاجين</span>
+    </div>
+
+    <nav class="flex flex-wrap items-center justify-center gap-6 uppercase tracking-wide text-xs">
+      <a href="#accueil" class="hover:text-saffron transition-colors">Accueil</a>
+      <a href="#menu" class="hover:text-saffron transition-colors">Menu</a>
+      <a href="#contact" class="hover:text-saffron transition-colors">Contact Us</a>
+      <a href="#localisation" class="hover:text-saffron transition-colors">Localisation</a>
+    </nav>
+
+    <p class="text-parchment/50 text-xs">&copy; 2026 Dar Tajine — Avenue 2 Mars, Agadir. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const panel = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    iconOpen.classList.toggle('hidden', isOpen);
+    iconClose.classList.toggle('hidden', !isOpen);
+  });
+
+  panel.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      panel.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    });
+  });
+</script>
+
+</body>
+</html>
